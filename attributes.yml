@@ -1,0 +1,2 @@
+command_relative_path: 'bin/postgres'
+listening_port: '5432'
