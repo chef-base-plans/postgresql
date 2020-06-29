@@ -1,14 +1,10 @@
-[![Build Status](https://dev.azure.com/chefcorp-partnerengineering/Chef%20Base%20Plans/_apis/build/status/chef-base-plans.postgresql?branchName=master)](https://dev.azure.com/chefcorp-partnerengineering/Chef%20Base%20Plans/_build/latest?definitionId=69&branchName=master)
+[![Build Status](https://dev.azure.com/chefcorp-partnerengineering/Chef%20Base%20Plans/_apis/build/status/chef-base-plans.postgresql?branchName=master)](https://dev.azure.com/chefcorp-partnerengineering/Chef%20Base%20Plans/_build/latest?definitionId=179&branchName=master)
 
-# PostgreSQL
-
-This packages PostgreSQL in a Habitat package that can be run with the Habitat Supervisor.
-
-This PostgreSQL plan supports standalone and clustered modes.
+This packages PostgreSQL in a Habitat package that can be run with the Habitat Supervisor.  This PostgreSQL plan supports standalone and clustered modes.  See [documentation](https://www.postgresql.org/docs/)
 
 ## Maintainers
 
-The Habitat Maintainers humans@habitat.sh
+* The Core Planners: <chef-core-planners@chef.io>
 
 ## Type of Package
 
@@ -149,13 +145,3 @@ This plan has not been tested in a highly available architecture.
 ## Monitoring
 
 If you wish to monitor this service directly, you can use [Datadog](https://www.datadoghq.com/) (there is also a [datadog agent plan](./dd-agent) in this repo), [Sumologic](https://www.sumologic.com/)(there is also a [sumlogic plan](./sumologic)), and other monitoring services.
-
-## Notes
-
-# TODO (Potential improvements to this plan):
-- Upgrade logic (detect if the database engine is newer than the data on disk and perform pg_upgrade)
-- Full cluster restart logic (elect the previous leader)
-  - add a `suitability` hook based on the existence of a `recovery.conf` file
-- Test for various high-availability and other operational optimizations (high writes, high reads)
-  - add configuration to the plan for people who wish to use those
-- Add documentation of running Wal-E with PostgreSQL in a composite plan.
