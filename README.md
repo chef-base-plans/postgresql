@@ -73,46 +73,61 @@ However if you're using more of a rigid configuration file syntax then you still
 ### Standalone
 
 To run a standalone PostgreSQL instance simply run
-```
+
+```bash
 hab start core/postgresql
 ```
+
 or
+
+```bash
+docker run --rm --detach --env HAB_LICENSE=accept core/postgresql
 ```
-docker run habitat/postgresql
-```
+
 if you want to bring up the pre-exported docker image.
 
 ### Leader/Follower
 
 This plan supports running clustered PostgreSQL by utilizing Habitat's native leader election.
 
-You can run an example cluster via docker-compose after exporting a docker container from this plan:
-```
-$ hab pkg export docker $(ls -1t results/*.hart | head -1)
+You can run an example cluster via docker-compose after building and exporting a docker container from this plan:
+
+```bash
+$ build .
+$ source ./results/last_build.env
+$ hab pkg install ./results/$pkg_artifact
+$ hab pkg install core/docker core/hab-pkg-export-docker
+$ hab pkg export docker ./results/$pkg_artifact
 ```
 
 The docker post-process should create a docker image named `core/postgresql` and it should be available on your local machine
 
-```
+```bash
 cat <<EOF > docker-compose.yml
 version: '3'
 
 services:
   pg1:
-    image: habitat/postgresql
+    image: core/postgresql
+    environment:
+    - HAB_LICENSE=accept
     command: --group cluster
       --topology leader
     volumes:
       - pg1-data:/hab/svc/postgresql/data
   pg2:
-    image: habitat/postgresql
+    image: core/postgresql
+    environment:
+    - HAB_LICENSE=accept
     command: --group cluster
       --topology leader
       --peer pg1
     volumes:
       - pg2-data:/hab/svc/postgresql/data
   pg3:
-    image: habitat/postgresql
+    image: core/postgresql
+    environment:
+    - HAB_LICENSE=accept
     command: --group cluster
       --topology leader
       --peer pg1
