@@ -1,13 +1,13 @@
 # shellcheck disable=SC2164
 pkg_name=postgresql
-pkg_version=9.6.21
+pkg_version=9.6.23
 pkg_origin=core
 pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_description="PostgreSQL is a powerful, open source object-relational database system."
 pkg_upstream_url="https://www.postgresql.org/"
 pkg_license=('PostgreSQL')
 pkg_source="https://ftp.postgresql.org/pub/source/v${pkg_version}/${pkg_name}-${pkg_version}.tar.bz2"
-pkg_shasum="930feaef28885c97ec40c26ab6221903751eeb625de92b22602706d7d47d1634"
+pkg_shasum=a849f798401ab8c6dfa653ebbcd853b43f2200b4e3bc1ea3cb5bec9a691947b9
 
 pkg_deps=(
   core/bash
