@@ -8,7 +8,6 @@ pkg_upstream_url="https://www.postgresql.org/"
 pkg_license=('PostgreSQL')
 pkg_source="https://ftp.postgresql.org/pub/source/v${pkg_version}/${pkg_name}-${pkg_version}.tar.bz2"
 pkg_shasum="aeb7a196be3ebed1a7476ef565f39722187c108dd47da7489be9c4fcae982ace"
-
 pkg_deps=(
   core/bash
   core/glibc
